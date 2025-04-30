@@ -8,4 +8,8 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    // resolve: {
+    //     alias: {
+    //         '~fontawesome': '@fortawesome/fontawesome-free',        },
+    // },
 });
