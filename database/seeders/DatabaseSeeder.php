@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use Database\Seeders\test\AccountSeederTest;
+use Database\Seeders\test\UserSeederTest;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,11 +15,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        if (app()->environment('local')) {
+            // Seeders para producción
+            $this->call([
+                RolSeeder::class,
+                UserSeeder::class,
+            ]);
+        } elseif (app()->environment('testing')) {
+            // Seeders para desarrollo o pruebas locales
+            $this->call([
+                RolSeeder::class,
+                UserSeederTest::class,
+                AccountSeederTest::class,
+            ]);
+        }
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
     }
 }

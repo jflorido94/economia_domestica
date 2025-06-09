@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'rol_id', // Added rol_id to mass assignable attributes
     ];
 
     /**
@@ -44,5 +45,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function rol()
+    {
+        return $this->belongsTo(Rol::class); // Added relationship with Rol model
     }
 }
