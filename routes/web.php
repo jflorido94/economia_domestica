@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BankController;
-use App\Http\Controllers\RolController;
+use App\Http\Controllers\RoleController;
 
 Route::get('/', function () {
     return view('dashboard');
@@ -16,6 +16,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('banks', BankController::class)->middleware('auth');
-Route::resource('rols', RolController::class)->middleware('auth'); //admin
+Route::resource('roles', RoleController::class)->middleware('auth'); //admin
 
 require __DIR__.'/auth.php';

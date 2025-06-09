@@ -6,12 +6,12 @@
 
     <div>
         <x-input-label for="name" :value="__('Name')" />
-        <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name', $rol->name ?? '')" required autofocus />
+        <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name', $role->name ?? '')" required autofocus />
         <x-input-error :messages="$errors->get('name')" class="mt-2" />
     </div>
     <div>
         <x-input-label for="description" :value="__('Description')" />
-        <x-text-input id="description" class="block mt-1 w-full" type="text" name="description" :value="old('description', $rol->description ?? '')" required autofocus />
+        <x-text-input id="description" class="block mt-1 w-full" type="text" name="description" :value="old('description', $role->description ?? '')" required autofocus />
         <x-input-error :messages="$errors->get('description')" class="mt-2" />
     </div>
 

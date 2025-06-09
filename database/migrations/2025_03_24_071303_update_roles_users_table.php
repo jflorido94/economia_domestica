@@ -13,15 +13,15 @@ return new class extends Migration
     public function up(): void
     {
         // Inserta roles básicos antes de agregar la clave foránea
-        DB::table('rols')->insertOrIgnore([
+        DB::table('roles')->insertOrIgnore([
             ['id' => 1, 'name' => 'usuario', 'description' => 'Rol básico para usuarios.'],
             ['id' => 2, 'name' => 'admin', 'description' => 'Rol para administradores.'],
         ]);
 
         Schema::table('users', function (Blueprint $table) {
-            if (!Schema::hasColumn('users', 'rol_id')) {
-                $table->foreignId('rol_id')->default(1) // Valor predeterminado para rol_id
-                    ->constrained('rols')->onDelete('cascade'); // Relación con la tabla rols, con eliminación en cascada
+            if (!Schema::hasColumn('users', 'role_id')) {
+                $table->foreignId('role_id')->default(1) // Valor predeterminado para rol_id
+                    ->constrained('roles')->onDelete('cascade'); // Relación con la tabla rols, con eliminación en cascada
             }
         });
     }
@@ -32,8 +32,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign(['rol_id']); // Eliminar la clave foránea
-            $table->dropColumn('rol_id'); // Eliminar la columna
+            $table->dropForeign(['role_id']); // Eliminar la clave foránea
+            $table->dropColumn('role_id'); // Eliminar la columna
         });
     }
 };

@@ -21,7 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'rol_id', // Added rol_id to mass assignable attributes
+        'role_id', // Added role_id to mass assignable attributes
     ];
 
     /**
@@ -47,8 +47,19 @@ class User extends Authenticatable
         ];
     }
 
-    public function rol()
+    public function role()
     {
-        return $this->belongsTo(Rol::class); // Added relationship with Rol model
+        return $this->belongsTo(Role::class); // Added relationship with Role model
     }
+
+    public function accounts()
+    {
+        return $this->hasMany(Account::class);
+    }
+
+    public function banks()
+    {
+        return $this->hasManyThrough(Bank::class, Account::class);
+    }
+
 }

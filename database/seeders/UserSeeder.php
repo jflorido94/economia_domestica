@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
                 'name' => 'Javier Florido',
                 'email' => 'hbranky22@hotmail.com',
                 'password' => bcrypt('147258'), // Use bcrypt to hash the password
-                'rol_id' => 2, // Assign the admin role
+                'role_id' => 2, // Assign the admin role
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

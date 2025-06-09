@@ -18,13 +18,13 @@ class DatabaseSeeder extends Seeder
         if (app()->environment('local')) {
             // Seeders para producción
             $this->call([
-                RolSeeder::class,
+                RoleSeeder::class,
                 UserSeeder::class,
             ]);
         } elseif (app()->environment('testing')) {
             // Seeders para desarrollo o pruebas locales
             $this->call([
-                RolSeeder::class,
+                RoleSeeder::class,
                 UserSeederTest::class,
                 AccountSeederTest::class,
             ]);
